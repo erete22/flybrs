@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLYbrs — Otonom AI Gelir Sistemi · 21 Ajan, 7/24 Çalışan</title>
+<meta name="description" content="Kripto sinyal botu, AURORA içerik üretimi, GitHub bounty taraması, fiyat alarmları. 21 AI ajan Telegram üzerinden senin yerine çalışır. 30 saniyede ücretsiz başla.">
+<meta name="keywords" content="ai bot, kripto sinyal, otomasyon, gelir, telegram bot, türkçe ai, flybrs, otonom ajan, openrouter">
+<meta name="author" content="FLYbrs · Kemal">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://erete22.github.io/flybrs/">
+
+<!-- Open Graph (Facebook, Telegram, WhatsApp, LinkedIn) -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://erete22.github.io/flybrs/">
+<meta property="og:title" content="FLYbrs — Senin yerine çalışan bir AI ordusu">
+<meta property="og:description" content="21 AI ajan, 7/24 kripto sinyal + içerik + raporlama. Telegram'dan komut, sonuç telefonuna düşer.">
+<meta property="og:image" content="https://erete22.github.io/flybrs/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:site_name" content="FLYbrs">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FLYbrs — Otonom AI Gelir Sistemi">
+<meta name="twitter:description" content="21 AI ajan senin yerine çalışıyor. Sen uyurken bile gelir.">
+<meta name="twitter:image" content="https://erete22.github.io/flybrs/og.png">
+
+<!-- Favicon (inline SVG, ek dosya gerektirmez) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='%230a0a0a' stroke='%23C9A961' stroke-width='3'/><text x='50' y='68' font-family='Georgia,serif' font-size='55' font-weight='bold' text-anchor='middle' fill='%23E8C97A'>F</text></svg>">
+
+<!-- JSON-LD Structured Data (SEO için) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "FLYbrs",
+  "description": "Otonom AI gelir sistemi: 21 ajan, kripto sinyal, içerik üretimi, fiyat alarm, GitHub bounty taraması.",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Telegram, Web, Docker",
+  "inLanguage": "tr-TR",
+  "offers": [
+    { "@type": "Offer", "name": "Ücretsiz", "price": "0", "priceCurrency": "TRY" },
+    { "@type": "Offer", "name": "Premium aylık", "price": "499", "priceCurrency": "TRY" },
+    { "@type": "Offer", "name": "VIP yıllık", "price": "3999", "priceCurrency": "TRY" }
+  ],
+  "creator": { "@type": "Organization", "name": "FLYbrs", "url": "https://t.me/flybrs_bot" }
+}
+</script>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          gold: { 400: '#E8C97A', 500: '#C9A961', 600: '#A88643' },
+          ink:  { 900: '#0a0a0a', 800: '#16140f', 700: '#221d14' },
+          cream:'#F5E6C8'
+        },
+        fontFamily: {
+          serif: ['Georgia', 'serif'],
+          sans:  ['Inter', 'system-ui', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<style>
+  body { background: linear-gradient(180deg, #0a0a0a 0%, #16140f 100%); }
+  .gold-grad { background: linear-gradient(135deg, #E8C97A 0%, #C9A961 50%, #A88643 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .gold-border { border: 1px solid #C9A961; }
+  .gold-glow { box-shadow: 0 0 40px rgba(201,169,97,0.15); }
+  .card-hover { transition: all 0.3s ease; }
+  .card-hover:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(201,169,97,0.2); border-color: #E8C97A; }
+  .pulse-dot { animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.4; } }
+  .star-bg { background-image: radial-gradient(circle at 20% 30%, rgba(201,169,97,0.06) 0%, transparent 40%),
+                              radial-gradient(circle at 80% 70%, rgba(201,169,97,0.04) 0%, transparent 40%); }
+</style>
+</head>
+<body class="font-sans text-cream star-bg min-h-screen">
+
+<!-- NAV -->
+<nav class="border-b border-gold-600/20 backdrop-blur-sm sticky top-0 z-50 bg-ink-900/80">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <span class="text-3xl">⭐</span>
+      <span class="text-2xl font-serif font-bold gold-grad">FLYbrs</span>
+    </div>
+    <div class="hidden md:flex items-center gap-8 text-sm">
+      <a href="#nasil" class="hover:text-gold-400 transition">Nasıl Çalışır</a>
+      <a href="#ozellikler" class="hover:text-gold-400 transition">Özellikler</a>
+      <a href="#fiyat" class="hover:text-gold-400 transition">Fiyatlandırma</a>
+      <a href="#sss" class="hover:text-gold-400 transition">SSS</a>
+    </div>
+    <a href="https://t.me/flybrs_bot" class="px-5 py-2 gold-border rounded-full text-gold-400 hover:bg-gold-500 hover:text-ink-900 transition text-sm font-medium">
+      Telegram Bot →
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="max-w-6xl mx-auto px-6 pt-20 pb-24 text-center">
+  <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full gold-border bg-ink-800 mb-8 text-xs">
+    <span class="w-2 h-2 rounded-full bg-green-400 pulse-dot"></span>
+    <span class="text-gold-400">20+ AI ajan canlı çalışıyor</span>
+  </div>
+  <h1 class="text-5xl md:text-7xl font-serif font-bold mb-6 leading-tight">
+    Senin yerine <span class="gold-grad">çalışan</span><br>
+    bir AI ordusu
+  </h1>
+  <p class="text-xl md:text-2xl text-cream/70 mb-10 max-w-3xl mx-auto leading-relaxed">
+    Kripto sinyalleri, içerik üretimi, müşteri yanıtlama, GitHub bounty taraması.<br>
+    <span class="text-gold-400">Sen uyurken bile gelir.</span>
+  </p>
+  <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+    <a href="https://t.me/flybrs_bot" class="px-8 py-4 gold-grad rounded-full text-ink-900 font-bold text-lg hover:scale-105 transition gold-glow"
+       style="background:linear-gradient(135deg,#E8C97A,#C9A961);">
+      Ücretsiz Başla →
+    </a>
+    <a href="#nasil" class="px-8 py-4 gold-border rounded-full text-gold-400 hover:bg-ink-800 transition text-lg">
+      Nasıl Çalışır?
+    </a>
+  </div>
+  <p class="text-sm text-cream/40 mt-6">
+    🔒 Kredi kartı gerekmez · 🇹🇷 Türkçe destek · ⚡ 30 saniyede başlat
+  </p>
+</section>
+
+<!-- SORUN/ÇÖZÜM -->
+<section class="max-w-5xl mx-auto px-6 py-16 border-t border-gold-600/10">
+  <div class="grid md:grid-cols-2 gap-10">
+    <div>
+      <p class="text-sm text-red-400 mb-3 font-medium">SORUN</p>
+      <h2 class="text-3xl font-serif font-bold mb-6">Saatlerini grafiklere mi harcıyorsun?</h2>
+      <ul class="space-y-3 text-cream/70">
+        <li class="flex gap-3"><span class="text-red-400">✕</span><span>Kripto sinyalleri için sürekli ekran başında kalıyorsun</span></li>
+        <li class="flex gap-3"><span class="text-red-400">✕</span><span>İçerik üretmek günde 3-4 saatini yiyor</span></li>
+        <li class="flex gap-3"><span class="text-red-400">✕</span><span>Birden fazla aboneliğe ayda binlerce ₺ ödüyorsun</span></li>
+        <li class="flex gap-3"><span class="text-red-400">✕</span><span>Kazandıkça cebine sadece tasarruf giriyor — gelir yok</span></li>
+      </ul>
+    </div>
+    <div>
+      <p class="text-sm text-gold-400 mb-3 font-medium">ÇÖZÜM</p>
+      <h2 class="text-3xl font-serif font-bold mb-6">FLYbrs senin yerine yapıyor.</h2>
+      <ul class="space-y-3 text-cream/80">
+        <li class="flex gap-3"><span class="text-gold-400">✓</span><span>20+ ajan 7/24 sinyal/içerik/raporlama</span></li>
+        <li class="flex gap-3"><span class="text-gold-400">✓</span><span>Telegram'dan komut → otomatik iş akışı</span></li>
+        <li class="flex gap-3"><span class="text-gold-400">✓</span><span>Lokal AI çalışır — sıfır API maliyeti</span></li>
+        <li class="flex gap-3"><span class="text-gold-400">✓</span><span>14 günde ölçülebilir gelir akışı</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- NASIL ÇALIŞIR -->
+<section id="nasil" class="max-w-6xl mx-auto px-6 py-20 border-t border-gold-600/10">
+  <div class="text-center mb-16">
+    <p class="text-sm text-gold-400 mb-2">NASIL ÇALIŞIR</p>
+    <h2 class="text-4xl md:text-5xl font-serif font-bold">3 adımda <span class="gold-grad">otonom sistem</span></h2>
+  </div>
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="bg-ink-800 rounded-2xl p-8 gold-border card-hover">
+      <div class="text-gold-400 text-sm font-bold mb-2">01</div>
+      <div class="text-4xl mb-4">🤖</div>
+      <h3 class="text-xl font-bold mb-3 text-gold-400">Telegram'dan başla</h3>
+      <p class="text-cream/70 text-sm leading-relaxed">@flybrs_bot'a /abone yaz. 30 saniyede ücretsiz hesap. Kredi kartı yok.</p>
+    </div>
+    <div class="bg-ink-800 rounded-2xl p-8 gold-border card-hover">
+      <div class="text-gold-400 text-sm font-bold mb-2">02</div>
+      <div class="text-4xl mb-4">⚙️</div>
+      <h3 class="text-xl font-bold mb-3 text-gold-400">Hedefini söyle</h3>
+      <p class="text-cream/70 text-sm leading-relaxed">"Kripto sinyali", "blog yazısı", "müşteri yanıtla" → POLARIS doğru ajana yönlendirir.</p>
+    </div>
+    <div class="bg-ink-800 rounded-2xl p-8 gold-border card-hover">
+      <div class="text-gold-400 text-sm font-bold mb-2">03</div>
+      <div class="text-4xl mb-4">📈</div>
+      <h3 class="text-xl font-bold mb-3 text-gold-400">Sonuç telefonuna düşer</h3>
+      <p class="text-cream/70 text-sm leading-relaxed">Sinyal, rapor, yazı, alarm — bekleyen iş yok, sonuç var.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ÖZELLİKLER -->
+<section id="ozellikler" class="max-w-6xl mx-auto px-6 py-20 border-t border-gold-600/10">
+  <div class="text-center mb-16">
+    <p class="text-sm text-gold-400 mb-2">21 AJAN, TEK SİSTEM</p>
+    <h2 class="text-4xl md:text-5xl font-serif font-bold">Hangi <span class="gold-grad">işin</span> varsa</h2>
+  </div>
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <div class="bg-ink-800/60 rounded-xl p-6 gold-border card-hover">
+      <div class="flex items-center gap-3 mb-3"><span class="text-2xl">📡</span><h3 class="font-bold text-gold-400">VEGA — Kripto Sinyal</h3></div>
+      <p class="text-sm text-cream/70">9:00'da otomatik gün analizi. Winrate canlı dashboard.</p>
+    </div>
+    <div class="bg-ink-800/60 rounded-xl p-6 gold-border card-hover">
+      <div class="flex items-center gap-3 mb-3"><span class="text-2xl">🌈</span><h3 class="font-bold text-gold-400">AURORA — İçerik</h3></div>
+      <p class="text-sm text-cream/70">Reels + Tweet + Blog 3 formatta üretim, 6-adımlı pipeline.</p>
+    </div>
+    <div class="bg-ink-800/60 rounded-xl p-6 gold-border card-hover">
+      <div class="flex items-center gap-3 mb-3"><span class="text-2xl">⭐</span><h3 class="font-bold text-gold-400">POLARIS — Dispatcher</h3></div>
+      <p class="text-sm text-cream/70">Görev sınıflandır, doğru ajana yönlendir. 8 Coworker mode.</p>
+    </div>
+    <div class="bg-ink-800/60 rounded-xl p-6 gold-border card-hover">
+      <div class="flex items-center gap-3 mb-3"><span class="text-2xl">🪐</span><h3 class="font-bold text-gold-400">TITAN — GitHub Bounty</h3></div>
+      <p class="text-sm text-cream/70">$50+ açık bounty'leri tarayıp size haber verir.</p>
+    </div>
+    <div class="bg-ink-800/60 rounded-xl p-6 gold-border card-hover">
+      <div class="flex items-center gap-3 mb-3"><span class="text-2xl">💎</span><h3 class="font-bold text-gold-400">HYDRA — USDT Doğrulama</h3></div>
+      <p class="text-sm text-cream/70">Otomatik ödeme onayı, anında VIP davet.</p>
+    </div>
+    <div class="bg-ink-800/60 rounded-xl p-6 gold-border card-hover">
+      <div class="flex items-center gap-3 mb-3"><span class="text-2xl">🔔</span><h3 class="font-bold text-gold-400">LYRA — Fiyat Alarm</h3></div>
+      <p class="text-sm text-cream/70">"BTC > 70K" yaz, hedef geldiğinde Telegram bildirimi.</p>
+    </div>
+    <div class="bg-ink-800/60 rounded-xl p-6 gold-border card-hover">
+      <div class="flex items-center gap-3 mb-3"><span class="text-2xl">🧠</span><h3 class="font-bold text-gold-400">ATLAS — Ezber/Hafıza</h3></div>
+      <p class="text-sm text-cream/70">SM-2 algoritması ile bilgi tekrarları, kişisel öğretmen.</p>
+    </div>
+    <div class="bg-ink-800/60 rounded-xl p-6 gold-border card-hover">
+      <div class="flex items-center gap-3 mb-3"><span class="text-2xl">📊</span><h3 class="font-bold text-gold-400">CYGNUS — Winrate</h3></div>
+      <p class="text-sm text-cream/70">4 saatte bir performans hesabı. Şeffaf rakam.</p>
+    </div>
+    <div class="bg-ink-800/60 rounded-xl p-6 gold-border card-hover">
+      <div class="flex items-center gap-3 mb-3"><span class="text-2xl">+13</span><h3 class="font-bold text-gold-400">Daha fazla...</h3></div>
+      <p class="text-sm text-cream/70">NOVA, ORION, NEXUS, SOLARIS, NEBULA, ZENITH, AURORA, ECLIPSE, COSMOS, QUASAR, ANDROMEDA, SIRIUS, PULSAR, HERMES.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FİYATLANDIRMA -->
+<section id="fiyat" class="max-w-6xl mx-auto px-6 py-20 border-t border-gold-600/10">
+  <div class="text-center mb-16">
+    <p class="text-sm text-gold-400 mb-2">PLANLAR</p>
+    <h2 class="text-4xl md:text-5xl font-serif font-bold">Şeffaf <span class="gold-grad">fiyatlandırma</span></h2>
+  </div>
+  <div class="grid md:grid-cols-3 gap-6">
+    <!-- FREE -->
+    <div class="bg-ink-800 rounded-2xl p-8 border border-gold-600/30">
+      <h3 class="text-xl font-bold mb-2 text-cream">Ücretsiz</h3>
+      <p class="text-3xl font-bold mb-4">0 ₺<span class="text-sm font-normal text-cream/50">/ay</span></p>
+      <p class="text-cream/70 text-sm mb-6">Sistemi tanı, ücretsiz dene.</p>
+      <ul class="space-y-3 text-sm mb-8">
+        <li class="flex gap-2"><span class="text-gold-400">✓</span>Telegram bot erişimi</li>
+        <li class="flex gap-2"><span class="text-gold-400">✓</span>3 ücretsiz AI sorgu/gün</li>
+        <li class="flex gap-2"><span class="text-gold-400">✓</span>Kripto haberleri</li>
+        <li class="flex gap-2 text-cream/40"><span>✕</span>Sinyal kanalı</li>
+      </ul>
+      <a href="https://t.me/flybrs_bot" class="block text-center py-3 gold-border rounded-full hover:bg-gold-500 hover:text-ink-900 transition font-medium">
+        Hemen Başla
+      </a>
+    </div>
+    <!-- PREMIUM -->
+    <div class="bg-gradient-to-b from-ink-700 to-ink-800 rounded-2xl p-8 gold-border gold-glow relative scale-105">
+      <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 gold-grad text-ink-900 rounded-full text-xs font-bold"
+           style="background:linear-gradient(135deg,#E8C97A,#C9A961);">EN POPÜLER</div>
+      <h3 class="text-xl font-bold mb-2 text-gold-400">Premium</h3>
+      <p class="text-3xl font-bold mb-4">499 ₺<span class="text-sm font-normal text-cream/50">/ay</span></p>
+      <p class="text-cream/70 text-sm mb-6">Profesyonel kullanım, tam kapasite.</p>
+      <ul class="space-y-3 text-sm mb-8">
+        <li class="flex gap-2"><span class="text-gold-400">✓</span>VIP kripto sinyal kanalı</li>
+        <li class="flex gap-2"><span class="text-gold-400">✓</span>Sınırsız AI sorgu</li>
+        <li class="flex gap-2"><span class="text-gold-400">✓</span>AURORA içerik üretimi</li>
+        <li class="flex gap-2"><span class="text-gold-400">✓</span>Fiyat alarm sınırsız</li>
+        <li class="flex gap-2"><span class="text-gold-400">✓</span>Haftalık özel rapor</li>
+      </ul>
+      <a href="https://t.me/flybrs_bot?start=premium" class="block text-center py-3 rounded-full text-ink-900 font-bold transition hover:scale-105"
+         style="background:linear-gradient(135deg,#E8C97A,#C9A961);">
+        Premium'a Geç →
+      </a>
+    </div>
+    <!-- VIP -->
+    <div class="bg-ink-800 rounded-2xl p-8 border border-gold-600/30">
+      <h3 class="text-xl font-bold mb-2 text-cream">VIP / Yıllık</h3>
+      <p class="text-3xl font-bold mb-1">3.999 ₺<span class="text-sm font-normal text-cream/50">/yıl</span></p>
+      <p class="text-xs text-gold-400 mb-4">2 ay bedava (5.988 ₺ yerine)</p>
+      <p class="text-cream/70 text-sm mb-6">Özel danışmanlık + tüm özellikler.</p>
+      <ul class="space-y-3 text-sm mb-8">
+        <li class="flex gap-2"><span class="text-gold-400">✓</span>Premium özelliklerin hepsi</li>
+        <li class="flex gap-2"><span class="text-gold-400">✓</span>Birebir Telegram destek</li>
+        <li class="flex gap-2"><span class="text-gold-400">✓</span>Özel ajan kurulumu</li>
+        <li class="flex gap-2"><span class="text-gold-400">✓</span>Erken erişim yeni özellikler</li>
+      </ul>
+      <a href="https://t.me/flybrs_bot?start=vip" class="block text-center py-3 gold-border rounded-full hover:bg-gold-500 hover:text-ink-900 transition font-medium">
+        VIP'e Geç
+      </a>
+    </div>
+  </div>
+  <p class="text-center text-sm text-cream/40 mt-8">
+    💎 USDT-TRC20, Binance Pay, Papara ile ödeme · 🛡️ İlk hafta iade garantisi
+  </p>
+</section>
+
+<!-- SSS -->
+<section id="sss" class="max-w-3xl mx-auto px-6 py-20 border-t border-gold-600/10">
+  <div class="text-center mb-12">
+    <p class="text-sm text-gold-400 mb-2">SIKÇA SORULAN</p>
+    <h2 class="text-4xl font-serif font-bold">Bilmek <span class="gold-grad">istediklerin</span></h2>
+  </div>
+  <div class="space-y-4">
+    <details class="bg-ink-800 rounded-xl p-6 border border-gold-600/20 group">
+      <summary class="cursor-pointer font-medium text-gold-400 list-none flex justify-between items-center">
+        Bu yatırım tavsiyesi mi?
+        <span class="text-gold-400 group-open:rotate-180 transition">▾</span>
+      </summary>
+      <p class="text-cream/70 mt-4 text-sm">Hayır. FLYbrs sinyal/analiz aracıdır, yatırım kararını sen verirsin. Geçmiş performans gelecek garanti vermez. SPK kayıtlı bir kurum değiliz.</p>
+    </details>
+    <details class="bg-ink-800 rounded-xl p-6 border border-gold-600/20 group">
+      <summary class="cursor-pointer font-medium text-gold-400 list-none flex justify-between items-center">
+        İptal etmek istesem?
+        <span class="text-gold-400 group-open:rotate-180 transition">▾</span>
+      </summary>
+      <p class="text-cream/70 mt-4 text-sm">Tek mesajla. /iptal yaz, biter. İlk 7 gün koşulsuz iade.</p>
+    </details>
+    <details class="bg-ink-800 rounded-xl p-6 border border-gold-600/20 group">
+      <summary class="cursor-pointer font-medium text-gold-400 list-none flex justify-between items-center">
+        Verilerim güvende mi?
+        <span class="text-gold-400 group-open:rotate-180 transition">▾</span>
+      </summary>
+      <p class="text-cream/70 mt-4 text-sm">Sadece Telegram ID ve ödeme referansı tutuyoruz. Kripto cüzdan/borsa erişimi istemiyoruz, kişisel kimlik bilgisi yok.</p>
+    </details>
+    <details class="bg-ink-800 rounded-xl p-6 border border-gold-600/20 group">
+      <summary class="cursor-pointer font-medium text-gold-400 list-none flex justify-between items-center">
+        Hangi borsa için sinyal veriyorsunuz?
+        <span class="text-gold-400 group-open:rotate-180 transition">▾</span>
+      </summary>
+      <p class="text-cream/70 mt-4 text-sm">Binance odaklı analiz, ama BTC/ETH/SOL/altcoin'lerde tüm büyük borsalarda uygulanabilir sinyaller.</p>
+    </details>
+    <details class="bg-ink-800 rounded-xl p-6 border border-gold-600/20 group">
+      <summary class="cursor-pointer font-medium text-gold-400 list-none flex justify-between items-center">
+        Bot Türkçe mi?
+        <span class="text-gold-400 group-open:rotate-180 transition">▾</span>
+      </summary>
+      <p class="text-cream/70 mt-4 text-sm">Tamamen Türkçe. Kemal (kurucu) Türkiye'de, destek 7/24 Türkçe.</p>
+    </details>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="max-w-4xl mx-auto px-6 py-20 text-center">
+  <div class="bg-gradient-to-br from-ink-700 to-ink-800 rounded-3xl p-12 gold-border gold-glow">
+    <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+      Sen uyurken bile <span class="gold-grad">çalışsın</span>
+    </h2>
+    <p class="text-xl text-cream/70 mb-10">
+      30 saniyede başla. Kredi kartı yok, taahhüt yok.
+    </p>
+    <a href="https://t.me/flybrs_bot" class="inline-block px-10 py-5 rounded-full text-ink-900 font-bold text-xl hover:scale-105 transition gold-glow"
+       style="background:linear-gradient(135deg,#E8C97A,#C9A961);">
+      @flybrs_bot — Hemen Başla →
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-gold-600/20 mt-10">
+  <div class="max-w-6xl mx-auto px-6 py-10 grid md:grid-cols-3 gap-8 text-sm">
+    <div>
+      <div class="flex items-center gap-2 mb-3">
+        <span class="text-2xl">⭐</span>
+        <span class="font-serif text-xl font-bold gold-grad">FLYbrs</span>
+      </div>
+      <p class="text-cream/50">Türkiye'nin ilk otonom AI gelir altyapısı.</p>
+    </div>
+    <div>
+      <h4 class="font-bold text-gold-400 mb-3">Bağlantılar</h4>
+      <ul class="space-y-2 text-cream/60">
+        <li><a href="https://t.me/flybrs_bot" class="hover:text-gold-400">Ana Bot</a></li>
+        <li><a href="#fiyat" class="hover:text-gold-400">Planlar</a></li>
+        <li><a href="#sss" class="hover:text-gold-400">SSS</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-bold text-gold-400 mb-3">İletişim</h4>
+      <ul class="space-y-2 text-cream/60">
+        <li>Telegram: @flybrs_bot</li>
+        <li>E-posta: knightonlinemka@gmail.com</li>
+        <li class="text-xs mt-4 text-cream/30">© 2026 FLYbrs. Tüm hakları saklıdır.</li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
