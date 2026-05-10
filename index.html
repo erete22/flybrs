@@ -50,6 +50,30 @@
 </script>
 
 <script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Analytics — 3 katmanlı, hangisi kurulu ise çalışır -->
+<script>
+  // 1) Plausible self-hosted (free, gizlilik dostu) — Kemal kurarsa:
+  // <script defer data-domain="erete22.github.io" src="https://plausible.io/js/script.js"></script>
+
+  // 2) GoatCounter (free) — kayıt sonrası tek satır:
+  // <script data-goatcounter="https://flybrs.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  // 3) Google Analytics 4 — alternatif:
+  // <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  // window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}
+  // gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');
+
+  // Şu anlık: lokal localStorage sayacı (görüntüleme sayısı görmek için minimal)
+  try {
+    const k = 'flybrs_views';
+    const n = (parseInt(localStorage.getItem(k)||'0',10)+1);
+    localStorage.setItem(k, n);
+    // konsola yaz, Kemal F12 ile kendi tarayıcısındaki ziyareti görsün
+    console.log('FLYbrs · ziyaret #'+n+' · '+new Date().toLocaleString('tr-TR'));
+  } catch(e){}
+</script>
+
 <script>
   tailwind.config = {
     theme: {
